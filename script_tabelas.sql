@@ -178,6 +178,44 @@ CREATE TABLE if not exists ilicitoRegistro(
 );
 
 
+
+
+DELIMITER //
+CREATE TRIGGER insere_softwarePermitidos
+AFTER INSERT ON software
+FOR EACH ROW
+BEGIN
+    INSERT INTO softwarePermitido (bloquado, fkSoftware, fkComputador) VALUES 
+     (false, NEW.idSoftware, 1),
+     (false, NEW.idSoftware, 2),
+     (false, NEW.idSoftware, 3),
+     (false, NEW.idSoftware, 4);
+END;
+//
+DELIMITER ;
+
+
+CREATE VIEW vwIdComponenteComputador AS
+select 
+	idComputador,
+	ipComputador,
+	cpu1.idHasComponente as 'cpu',
+	ram1.idHasComponente as 'ram',
+    disco1.idHasComponente as 'disco'
+from computador pc
+	join hasComponente cpu1 on cpu1.fkComputador = pc.idComputador
+    join hasComponente ram1 on ram1.fkComputador = pc.idComputador
+    join hasComponente disco1 on disco1.fkComputador = pc.idComputador
+		 join componente c on c.idComponente = cpu1.fkComponente
+         join componente c1 on c1.idComponente = ram1.fkComponente
+         join componente c2 on c2.idComponente = disco1.fkComponente
+			join unidadeMedida u on u.idUnidadeMedida = c1.fkUnidadeMedida
+				where c.tipo = 'CPU' 
+                and  c2.tipo = 'Disco' 
+                and c1.tipo = 'Memoria' 
+                and u.tipoMedida = '%';
+
+
 SET SQL_SAFE_UPDATES = 0;
 UPDATE computador c
 LEFT JOIN (
