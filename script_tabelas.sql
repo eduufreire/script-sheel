@@ -157,7 +157,7 @@ CREATE TABLE IF NOT EXISTS registroProcesso (
   fkProcesso INT,
   fkHasComponente INT,
   dataHora DATETIME,
-  FOREIGN KEY (fkProcesso) REFERENCES Processo(idProcesso),
+  FOREIGN KEY (fkProcesso) REFERENCES processo(idProcesso),
   FOREIGN KEY (fkHasComponente) REFERENCES hasComponente(idHasComponente)
 );
 
