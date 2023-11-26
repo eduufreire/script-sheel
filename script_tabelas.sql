@@ -188,6 +188,21 @@ INSERT INTO  empresa  ( idEmpresa ,  razaoSocial ,  cnpj ,  email ,  fkEndereco 
 INSERT INTO  funcionario  ( idFuncionario ,  fkGestor ,  fkEmpresa ,  nome ,  email ,  cpf ,  telefone ,  senha ) VALUES
 (null, NULL, 1, 'Fernando Brandão', 'fernando@callcenterabc.com', '12345678901', '(11) 1234-5678', 'senha123');
 
+INSERT INTO  unidadeMedida  ( idUnidadeMedida ,  tipoMedida ) VALUES 
+(null, '%'),
+(null, 'GHz'),
+(null, 'GB'),
+(null, 'MB'),
+(null, 'KB/s'),
+(null, 'Inteiro');
+
+INSERT INTO  componente  ( idComponente ,  tipo ,  fkUnidadeMedida ) VALUES 
+(null, 'CPU', 1),
+(null, 'Memoria', 1), 
+(null, 'Memoria', 3), 
+(null, 'Disco', 1),
+(null, 'PPM', 6);
+
 
 
 DELIMITER //
