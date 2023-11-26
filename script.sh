@@ -1,10 +1,12 @@
-#! bin/bash
+#! /bin/bash
 
+clear
+sleep 2
 sudo apt update && sudo apt upgrade
-
+#Instalando o docker
+sudo apt install docker.io
+echo "instalado"x
 java -version
-
-
 if [ $? = 0 ];
 
         then echo "Java instalado"
@@ -42,7 +44,9 @@ if [ $? = 0 ]
 
                 git clone https://github.com/inc-view/java-repository.git
 
-                else echo "Este repositório já existe"
+                else
+
+		echo "Este repositório já existe"
 
         fi
 
