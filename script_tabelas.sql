@@ -179,17 +179,28 @@ CREATE TABLE if not exists ilicitoRegistro(
 
 
 
+INSERT INTO  endereco  ( idEndereco ,  complemento ,  cep ,  descricao ) VALUES
+(null, 'Setor de Atendimento ao Cliente', '54321987', 'Localizada em um bairro comercial movimentado, próxima a restaurantes e lojas locais.');
+
+INSERT INTO  empresa  ( idEmpresa ,  razaoSocial ,  cnpj ,  email ,  fkEndereco ,  fkSede ) VALUES
+(null, 'Call Center ABC', '12345678901234', 'contato@callcenterabc.com', 1, NULL);
+
+INSERT INTO  funcionario  ( idFuncionario ,  fkGestor ,  fkEmpresa ,  nome ,  email ,  cpf ,  telefone ,  senha ) VALUES
+(null, NULL, 1, 'Fernando Brandão', 'fernando@callcenterabc.com', '12345678901', '(11) 1234-5678', 'senha123');
+
+
 
 DELIMITER //
-CREATE TRIGGER insere_softwarePermitidos
-AFTER INSERT ON software
+CREATE TRIGGER insere_hasComputadores
+AFTER INSERT ON computador
 FOR EACH ROW
 BEGIN
-    INSERT INTO softwarePermitido (bloquado, fkSoftware, fkComputador) VALUES 
-     (false, NEW.idSoftware, 1),
-     (false, NEW.idSoftware, 2),
-     (false, NEW.idSoftware, 3),
-     (false, NEW.idSoftware, 4);
+    INSERT INTO hasComponente (fkComponente, fkComputador) VALUES 
+     (1, NEW.idComputador),
+     (2, NEW.idComputador),
+     (3, NEW.idComputador),
+     (4, NEW.idComputador),
+     (5, NEW.idComputador);
 END;
 //
 DELIMITER ;
