@@ -55,6 +55,7 @@ PYTHON_INSTALLED=0
 which python | grep /usr/bin/python
 if [ $? = 0 ];
 	then
+	  sudo apt-get install unixodbc unixodbc-dec
 	  echo "Python instalado"
 	  PYTHON_INSTALLED=1
 	else
@@ -62,12 +63,13 @@ if [ $? = 0 ];
 	  sudo apt install python3-pip
 	  pip3 install psutil
 	  pip3 install matplotlib
+	  pip3 install mysql-connector-python
+	  sudo apt-get install unixodbc unixodbc-dev
 	  PYTHON_INSTALLED=1
 fi
 
 
 clear
-echo $PYTHON_INSTALLED
 
 if [ "$PYTHON_INSTALLED" -eq 1 ];
 	then
@@ -91,7 +93,7 @@ if [ "$PYTHON_INSTALLED" -eq 1 ];
 		cd viss-repository
 		git checkout qa
 		git pull origin qa
-	  	cd python-semBD
+	  	cd python-api
 	  	python3 api_dados.py
 
 	else
