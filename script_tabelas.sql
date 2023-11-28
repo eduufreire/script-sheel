@@ -251,7 +251,7 @@ DELIMITER $$
     IF NOT EXISTS (SELECT * FROM computador WHERE ipComputador = vIpComputador) 
 		THEN
 			INSERT INTO computador (ipComputador, nomePatrimonio, marca, fkFuncionario, sistemaOperacional, ativo) 
-			VALUES (vIpComputador, vNome, vMarcar, vFkFuncionario, vSO, 1);
+			VALUES (vIpComputador, vNome, vMarca, vFkFuncionario, vSO, 1);
 		
         ELSE 
 			update computador set ativo = 1 where ipComputador = vIpComputador;
