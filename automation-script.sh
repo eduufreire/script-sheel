@@ -55,7 +55,7 @@ PYTHON_INSTALLED=0
 which python | grep /usr/bin/python
 if [ $? = 0 ];
 	then
-	  sudo apt-get install unixodbc unixodbc-dec
+	  pip3 install pymssql
 	  echo "Python instalado"
 	  PYTHON_INSTALLED=1
 	else
@@ -64,7 +64,7 @@ if [ $? = 0 ];
 	  pip3 install psutil
 	  pip3 install matplotlib
 	  pip3 install mysql-connector-python
-	  sudo apt-get install unixodbc unixodbc-dev
+	  pip3 install pymssql
 	  PYTHON_INSTALLED=1
 fi
 
